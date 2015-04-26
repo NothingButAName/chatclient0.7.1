@@ -1,0 +1,74 @@
+<!--
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
+    <?xml version="1.0" encoding="utf-8"?>
+-->
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical"
+android:weightSum="1">
+
+<ScrollView
+    android:id="@+id/scrView"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="0dp"
+    android:layout_weight="0.95"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="527dp"
+            android:background="#ffacddff"
+            android:text="" />
+    </LinearLayout>
+
+</ScrollView>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="새연결"
+        android:textSize="11dp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:enabled="true" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="보내기"
+        android:textSize="11dp" />
+</LinearLayout>
+
+
+</LinearLayout>
