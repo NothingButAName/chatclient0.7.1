@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.os.NetworkOnMainThreadException;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -107,6 +108,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
+                textView2.append("새 대화상대를 찾습니다\n");
                send_Message("passwd4321");
 
                //나중에 주석 해제할부분
@@ -181,7 +183,8 @@ public class MainActivity extends ActionBarActivity {
         Handler mHandler = new Handler();
 
         @Override
-        public void run() {
+        public void run()
+        {
 
             while (true) try {
                 final String msg = dis.readUTF(); // 메세지를 수신한다
@@ -192,11 +195,17 @@ public class MainActivity extends ActionBarActivity {
                     }
                 });
 
-/*                if (msg.equals("대화상대를 찾았습니다."))
+                if (msg.equals("대화상대를 찾았습니다."))
                 {
                     // 메시지보내기버튼 활성화
-                    mHandler2.sendEmptyMessage((0));
-                }*/
+                   // mHandler2.sendEmptyMessage(1);
+                }
+
+                if (msg.equals("상대방이 대화를 종료하였습니다 - 새연결로"))
+                {
+                    // 메시지보내기버튼 비활성화
+                   // mHandler2.sendEmptyMessage(100);
+                }
 
 
             } catch (IOException e) {
@@ -218,7 +227,7 @@ public class MainActivity extends ActionBarActivity {
                     socket.close();
                     break; // 에러 발생하면 while문 종료
                 } catch (IOException e1) {
-                    e.printStackTrace();
+                    e1.printStackTrace();
                 }
 
             }
@@ -230,6 +239,27 @@ public class MainActivity extends ActionBarActivity {
 
 
     }
+
+    Handler mHandler2 = new Handler()
+    {
+        public void handleMessage(Message msg)
+        {
+            if (msg.what == 1) {
+                Button button = (Button) findViewById(R.id.button);
+
+                button.setEnabled(true);
+
+            }
+
+            else if (msg.what == 100) {
+                Button button = (Button) findViewById(R.id.button);
+
+                button.setEnabled(false);
+
+            }
+        }
+
+    };
 
 
     @Override
